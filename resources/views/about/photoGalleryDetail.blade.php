@@ -1,0 +1,48 @@
+
+
+@extends('layouts.master2')
+@section('content')
+
+@php
+    $lang = Session::get('locale');
+@endphp
+    <!-- Main content Start -->
+    <div class="main-content">
+        <!-- Events Section Start -->
+        <!-- <div class="container">
+        </div> -->
+        <div class="rs-gallery pt-100 pb-100 md-pt-70 md-pb-70 mt-5">
+            <div class="container mt-5">
+                <div class="" style="font-size: 30px">{{$photoGalery->getTranslatedAttribute('title')}}</div>
+                <div class="row mt-5">
+                    @php
+                        $images = json_decode($photoGalery->images);
+                        
+                    @endphp
+                    @foreach ($images as $image)
+                        
+                    
+                    <div class="col-lg-2 mb-30 col-md-6 gallery-img">
+                        <a class="image-popup" href="{{asset('storage/' . $image)}}">
+                            <div class="">
+                                <img src="{{asset('storage/' . $image)}}" alt="">
+                            </div>
+
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                {{-- <div class="pagenav-link orange-color text-center">
+                    <ul>
+                        <li>1</li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#"><i class="flaticon-next"></i></a></li>
+                    </ul>
+                </div> --}}
+            </div>
+        </div>
+        <!-- Events Section End -->
+    </div>
+    <!-- Main content End -->
+
+    @endsection
